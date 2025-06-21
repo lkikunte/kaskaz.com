@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg">
+   <symbol
+      id="kaskaz-logo" viewBox="0 0 64 64">
+      <path 
+         d="M 40,8 32,0 0,32 h 18 v 18 l 14,14 1,-1 V 24 h -9 z"/>
+      <path
+         d="m 64,32 -8,-8 h -9 v 8 z"/>
+   </symbol>
+   <symbol
+      id="hamburger-icon" viewBox="0 0 64 64">
+      <path
+         d="M 64,11 V 0 H 0 l 11,11 z"
+         id="hamburger-icon-1" />
+      <path
+         d="M 64,21 H 21 l 11,11 h 32 z"
+         id="hamburger-icon-2" />
+      <path
+         d="M 64,41 H 41 l 11,11 h 12 z"
+         id="hamburger-icon-3" />
+   </symbol>
+   <symbol
+      id="arrow-icon" viewBox="0 0 64 64">
+      <path
+         d="M 32,0 12,20 H 28 L 40,8 Z"
+         id="arrow-icon-1" />
+      <path
+         d="M 32,64 40,56 28,44 H 64 V 32 H 0 Z"
+         id="arrow-icon-2" />
+   </symbol>
+   <symbol
+      id="connect-icon" viewBox="0 0 64 64">
+      <path
+         d="M 32,6 V 38 L 0,6 6,0 24,18 V 6 Z"
+         id="connect-icon-1" />
+      <path
+         d="M 64,38 H 32 l 22,22 6,-6 -8,-8 h 12 z"
+         id="connect-icon-2" />
+      <path
+         d="m 40,30 h 12 l 8,-8 -6,-6 z"
+         id="connect-icon-3" />
+      <path
+         d="M 20,38 12,30 H 0 v 8 z"
+         id="connect-icon-4" />
+   </symbol>
+</svg>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="64"
+   height="64"
+   viewBox="0 0 64 64.000003"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="connectIcon.svg"
+   inkscape:dataloss="true"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="8"
+     inkscape:cx="37.1875"
+     inkscape:cy="38.0625"
+     inkscape:window-width="1920"
+     inkscape:window-height="974"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g21"
+     showguides="false">
+    <sodipodi:guide
+       position="-50.092538,13.909439"
+       orientation="11.017399,0"
+       id="guide15"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="-50.092538,2.8920403"
+       orientation="0,32"
+       id="guide16"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="-18.092537,2.8920403"
+       orientation="-11.017399,0"
+       id="guide17"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="-18.092537,13.909439"
+       orientation="0,-32"
+       id="guide18"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g21"
+       transform="translate(66.092537,1.876687)">
+      <path
+         style="fill:#ffcc2a;stroke-width:1"
+         d="M -26.092536,42.090561 -58.092535,10.090563 H 5.9074633 l -31.9999993,31.999998 -3e-6,21.333331 21.3333359,-21.33333 v 21.333333 l -42.6666659,-3e-6 V 42.090563 l 21.333333,21.333332 z"
+         id="path19"
+         sodipodi:nodetypes="ccccccccccc" />
+      <rect
+         style="fill:#ffcc2a;fill-opacity:1;stroke:none;stroke-width:0.131;stroke-dashoffset:23.811;stroke-opacity:1;paint-order:stroke markers fill"
+         id="rect30"
+         width="7.8682718"
+         height="7.8682718"
+         x="-57.960808"
+         y="42.22229" />
+    </g>
+  </g>
+</svg>

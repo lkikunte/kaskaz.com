@@ -1,0 +1,182 @@
+FUNCTION customVerticalScrollbar(scrollableContainer, scrollableElements)
+    // Step 1: Validate scrollableContainer
+    IF scrollableContainer IS Nothing OR scrollableContainer is empty
+        PRINT "No scrollable container has been provided. Please provide a valid container with at least one of the following classes: .scrollbar, .custom-scrollbar, .vertical-scrollbar, or .horizontal-scrollbar. Function has exited."
+        RETURN
+    END IF
+    ELSE IF TypeOf scrollableContainer Is String AND scrollableContainer starts with '#'
+        containerSelector = 'id'
+        containerId = scrollableContainer.substring(1)
+        containers = document.getElementById(containerId)
+        
+        IF containers is null
+            PRINT "No container found with id " + scrollableContainer + ". Please provide a valid container with at least one of the following classes: .scrollbar, .custom-scrollbar, .vertical-scrollbar, or .horizontal-scrollbar. Function has exited."
+            RETURN
+        END IF
+        
+        IF containers has div child with at least one of the classes 'scrollbar', 'custom-scrollbar', 'vertical-scrollbar', 'horizontal-scrollbar'
+            selectedContainer = containers
+        ELSE
+            PRINT "There is no container of " + scrollableContainer + " id with a div child with at least one of the following classes: .scrollbar, .custom-scrollbar, .vertical-scrollbar, or .horizontal-scrollbar. Please provide a valid container. Function has exited."
+            RETURN
+        END IF
+    ELSE IF scrollableContainer starts with '.'
+        containerSelector = 'class'
+        containerClass = scrollableContainer.substring(1)
+        containers = document.getElementsByClassName(containerClass)
+        
+        IF containers IS Nothing OR containers.length == 0
+            PRINT "There is no container of " + scrollableContainer + " class . Please provide a valid container. Please provide a valid container with at least one of the following classes: .scrollbar, .custom-scrollbar, .vertical-scrollbar, or .horizontal-scrollbar. Function has exited."
+            RETURN
+        END IF
+        
+        validContainers = []
+        FOR EACH element IN containers
+            IF element has div child with at least one of the classes 'scrollbar', 'custom-scrollbar', 'vertical-scrollbar', 'horizontal-scrollbar'
+                ADD element to validContainers
+            END IF
+        END FOR
+        
+        IF validContainers.length == 0
+            PRINT "There is no container of " + scrollableContainer + " class. Please provide a valid container. Function has exited."
+            RETURN
+        ELSE IF validContainers.length > 1
+            PRINT "There is more than one container of " + scrollableContainer + " class that has a div child with at least one of the following classes: .scrollbar, .custom-scrollbar, .vertical-scrollbar, or .horizontal-scrollbar. The function has proceeded with the first one. If this is incorrect, please replace the class with the id of the correct container."
+            selectedContainer = validContainers[0]
+        ELSE
+            selectedContainer = validContainers[0]
+        END IF
+    ELSE
+        containerSelector = 'tag'
+        containers = document.getElementsByTagName(scrollableContainer)
+        
+        IF containers.length == 0
+            PRINT "There is no container of " + scrollableContainer + " tag. Please provide a valid container. Function has exited."
+            RETURN
+        END IF
+        
+        validContainers = []
+        FOR EACH element IN containers
+            IF element has div child with at least one of the classes 'scrollbar', 'custom-scrollbar', 'vertical-scrollbar', 'horizontal-scrollbar'
+                ADD element to validContainers
+            END IF
+        END FOR
+        
+        IF validContainers.length == 0
+            PRINT "There is no container of " + scrollableContainer + " tag with a div child with at least one of the following classes: .scrollbar, .custom-scrollbar, .vertical-scrollbar, or .horizontal-scrollbar. Please provide a valid container. Function has exited."
+            RETURN
+        ELSE IF validContainers.length > 1
+            PRINT "There is more than one container with " + scrollableContainer + " tag that has a div child with at least one of the following classes: .scrollbar, .custom-scrollbar, .vertical-scrollbar, or .horizontal-scrollbar. The function has proceeded with the first one. If this is incorrect, please replace the class with the id of the correct container."
+            selectedContainer = validContainers[0]
+        ELSE
+            selectedContainer = validContainers[0]
+        END IF
+    END IF
+    // Validate internal structure
+SET scrollbarContainer = selectedContainer.querySelector("div.scrollbar, div.custom-scrollbar, div.vertical-scrollbar, div.horizontal-scrollbar")
+SET scrollbarTrack = scrollbarContainer.querySelector('.scrollbar-track')
+SET scrollbarThumb = scrollbarTrack.querySelector('.scrollbar-thumb')
+SET scrollButtonUp = scrollbarContainer.querySelector('.scrollbar-button.scrollbar-button-up')
+SET scrollButtonDown = scrollbarContainer.querySelector('.scrollbar-button.scrollbar-button-down')
+
+SET missingElements = []
+
+IF scrollbarTrack IS Nothing
+    ADD "a .scrollbar-track div child of scrollbar wrapper container" to missingElements
+END IF
+IF scrollbarThumb IS Nothing
+    ADD "a .scrollbar-thumb div child of .scrollbar-track div" to missingElements
+END IF
+IF scrollButtonUp IS Nothing
+    ADD "a .scrollbar-button.scrollbar-button-up button child of scrollbar wrapper container" to missingElements
+END IF
+IF scrollButtonDown IS Nothing
+    ADD "a .scrollbar-button.scrollbar-button-down button child of scrollbar wrapper container" to missingElements
+END IF
+
+IF missingElements is not empty
+    PRINT "The container " + scrollableContainer + " has an invalid scrollbar structure. Missing: " + missingElements.join(', ') + ". Function has exited."
+    RETURN
+END IF
+    // Step 2: Validate scrollableElements
+    validatedElements = []
+    rejectedElements = []
+    sublistSelectors = []
+    
+    IF scrollableElements IS Nothing OR scrollableElements is empty
+        PRINT "No scrollable elements have been provided. Function will assume all descendant elements of " + scrollableContainer + " are scrollable. If this is incorrect, please provide scrollable elements."
+        validatedElements = selectedContainer.querySelectorAll('*') // Add all descendants in DOM node order
+    ELSE
+        IF TypeOf scrollableElements Is String THEN
+            elementSelectors = scrollableElements.split(' ') // Split by space
+        ELSE
+            PRINT "Invalid input: scrollableElements must be a string. Function has exited."
+            RETURN
+        END IF
+        FOR EACH selector IN elementSelectors
+            IF selector starts with '#'
+                elementId = selector.substring(1)
+                element = selectedContainer.querySelector(selector)
+                IF element exists
+                    ADD element to validatedElements
+                ELSE
+                    ADD elementId to rejectedElements
+                END IF
+            ELSE IF selector starts with '.'
+                className = selector.substring(1)
+                elements = selectedContainer.getElementsByClassName(className)
+                    ADD {name: selector, elements: elements} to sublistSelectors
+                    ADD className to rejectedElements
+                ELSE IF elements.length == 1
+                    ADD elements[0] to validatedElements
+                ELSE
+                    ADD {name: selector, elements: elements} to validatedElements
+                    ADD selector to sublistSelectors
+                END IF
+            ELSE
+                elements = selectedContainer.getElementsByTagName(selector)
+                IF elements.length == 0
+                    ADD selector to rejectedElements
+                ELSE IF elements.length == 1
+                    ADD elements[0] to validatedElements
+                ELSE
+                    ADD {name: selector, elements: elements} to validatedElements
+                    ADD selector to sublistSelectors
+                END IF
+            END IF
+        END FOR
+        
+        // Step 3: Handle validation results
+        IF validatedElements is empty AND sublistSelectors is empty AND rejectedElements is not empty
+            PRINT "None of the provided element(s): " + rejectedElements.join(', ') + " were found in " + scrollableContainer + ". Function has exited."
+            RETURN
+        END IF
+        
+            flattenedElements = []
+            FOR EACH element IN validatedElements
+                ADD element to flattenedElements
+            END FOR
+            
+            FOR EACH sublist IN sublistSelectors
+                FOR EACH element IN sublist.elements
+                    ADD element to flattenedElements
+                END FOR
+            END FOR
+            
+            validatedElements = flattenedElements
+                        ADD element to flattenedElements
+                    END FOR
+                END IF
+            END FOR
+            validatedElements = flattenedElements
+            
+            IF rejectedElements is empty
+                PRINT "The following selector(s) found more than one element with these names: " + sublistSelectors.join(', ') + ". Function will assume all to be scrollable."
+            ELSE
+                PRINT "The following element(s) were not found in " + scrollableContainer + ": " + rejectedElements.join(', ') + ". Function will proceed with other provided elements. The following selector(s) found more than one element with these names: " + sublistSelectors.join(', ') + ". Function will assume all to be scrollable."
+            END IF
+        END IF
+    END IF
+    
+    // Continue with scrollbar implementation using selectedContainer and validatedElements
+END FUNCTION

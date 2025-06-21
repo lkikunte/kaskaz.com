@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta Tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Page Title -->
+  <title>KASKAZ UIx Labs | Modern UI/UX Design</title>
+
+  <!-- Font Preload -->
+  <link rel="preload" href="assets/fonts/josefin sans/josefinsans-variablefont_wght-webfont.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/raleway/raleway-variablefont_wght-webfont.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inconsolata lgc/vertopal.com_inconsolata-lgc-webfont.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHBhdGggZD0iTTYwLDMyIDMyLDQgNCwzMiBIMTkuNDUgViA0Ny40NSBMIDMyLDYwIDMzLjA2NCw1OC45MzYgViAyNS4wNjQgSCAyNS4xNzIgTCAzOS4xMTgsMTEuMTE4IDUzLjA2NCwyNS4wNjQgSCA0NS4xNzIgViAzMiBaIiBzdHlsZT0iZmlsbDojZmZjYzJhO3N0cm9rZS13aWR0aDo0Ljk7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3BhaW50LW9yZGVyOmZpbGwgbWFya2VycyBzdHJva2UiLz48L3N2Zz4=" type="image/svg+xml">
+
+  <!-- Scripts -->
+  <script src="assets/js/scripts.js"></script>
+</head>
+<body class="scroll-container">
+  <!-- View Toggles (hidden) -->
+  <input type="checkbox" id="menu-toggle" class="view-toggle">
+  <input type="checkbox" id="connect-toggle" class="view-toggle">
+  <input type="checkbox" id="main-toggle" class="view-toggle">
+  <!-- SVG Symbol Definition (hidden) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol
+        id="kaskaz-logo" viewBox="0 0 64 64" fill="var(--fill)" stroke="var(--stroke)" stroke-width="var(--stroke-width)">
+              <path 
+                d="M 40,8 32,0 0,32 h 18 v 18 l 14,14 1,-1 V 24 h -9 z"/>
+              <path
+                d="m 64,32 -8,-8 h -9 v 8 z"/>
+     </symbol>
+    <symbol
+        id="hamburger-icon" viewBox="0 0 64 64" fill="var(--fill)" stroke="var(--stroke)" stroke-width="var(--stroke-width)">
+        <path
+          d="M 0,8 V 0 h 64 l -8,8 z"
+          id="hamburger-icon-1" />
+        <path
+          d="m 0,21.333333 h 42.666667 l -8,8 H 0 Z"
+          id="hamburger-icon-2" />
+        <path
+          d="m 0,42.666667 h 21.333333 l -8,8 H 0 Z"
+          id="hamburger-icon-3" />
+    </symbol>
+    <symbol
+        id="arrow-icon" viewBox="0 0 64 64" fill="var(--fill)" stroke="var(--stroke)" stroke-width="var(--stroke-width)">
+        <path
+          d="M 32,0 12,20 H 28 L 40,8 Z"
+          id="arrow-icon-1" />
+        <path
+          d="M 32,64 40,56 28,44 H 64 V 32 H 0 Z"
+          id="arrow-icon-2" />
+    </symbol>
+    <symbol
+        id="connect-icon" viewBox="0 0 76 64" fill="var(--fill)" stroke="var(--stroke)" stroke-width="var(--stroke-width)">
+        <path
+          d="m 22,16 -6,6 8,8 h 12 z"
+          id="connect-icon-1" />
+        <path
+          d="m 0,38 v 8 h 24 l -8,8 6,6 22,-22 z"
+          id="connect-icon-2" />
+        <path
+          d="M 70,0 52,18 V 6 H 44 V 38 L 76,6 Z"
+          id="connect-icon-3" />
+        <path
+          d="m 64,30 -8,8 h 20 v -8 z"
+          id="connect-icon-4" />
+    </symbol>
+  </svg>
+  <input type="checkbox" id="menu-toggle" class="view-toggle">
+  <input type="checkbox" id="connect-toggle" class="view-toggle">
+  <input type="checkbox" id="main-toggle" class="view-toggle">
+  <!-- Custom Scrollbar -->
+  <div class="scrollbar-track">
+    <div class="scrollbar-thumb"></div>
+  </div>
+  <!-- Sticky Navbar -->
+  <header class="navbar" id="main-navbar">
+    <!-- Navigation Controls Container -->
+    <nav class="nav-container" id="nav-controls">
+      <!-- Left Navigation Section -->
+      <div class="nav-section" id="nav-section-left">
+        <!-- Logo Home Button -->
+        <label class="nav-button" id="nav-logo" aria-label="Home">
+          <svg class="icon logo" id="nav-logo-icon">
+            <mask id="logo-mask">
+              <rect width="64" height="64" fill="white"/> <!-- Opaque background -->
+              <use href="#kaskaz-logo" />    <!-- Transparent cutouts -->
+            </mask>
+              <rect width="64" height="64" mask="url(#logo-mask)"id="masked-logo"/>
+          </svg>
+        </label>
+        <!-- Menu Button -->
+        <label for="menu-toggle" class="nav-button" id="menu-button" aria-label="Menu">
+          <svg class="icon ui" id="nav-menu-icon">
+            <use href="#hamburger-icon"/>
+          </svg>
+        </label>
+      </div>
+      <!-- Middle Navigation Section -->
+      <div class="nav-section" id="nav-section-middle">
+        <h1 class="logotype">KASKAZ UIx Labs</h1>
+      </div>
+      <!-- Right Navigation Section -->
+      <div class="nav-section" id="nav-section-right">
+        <!-- Connect Button -->
+        <label for="connect-toggle" class="nav-button" id="connect-button" aria-label="Connect">
+          <svg class="icon ui" id="nav-connect-icon">
+            <use href="#connect-icon"/>
+          </svg>
+        </label>
+      </div>
+    </nav>
+  </header>
+  <!-- Main Container -->
+  <div class="content-wrapper">
+    <!-- Left Column (Menu) -->
+    <aside id="left-column-menu" class="side-column column">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/portfolio">Portfolio</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/services">Services</a></li>
+      </ul>
+    </aside>
+
+    <!-- Middle Column (Main Content) -->
+    <main class="middle-column column">
+      <!-- Parallax Background -->
+      <div class="parallax-bg"></div>
+
+      <!-- Hero Section (8/9 viewport height) -->
+      <section class="hero">
+        <h1 class="hero-title">
+          <span class="word">HUMANOMIC.</span>
+          <span class="word">MODERN.</span>
+          <span class="word">UI/X.</span>          
+        </h1>
+        <h3 class="hero-subtitle">Interactive prototypes with SVG and JavaScript animations.</h3>
+        <a href="https://www.fiverr.com/yourusername" class="cta-button">Hire Me on Fiverr</a>
+      </section>
+
+      <!-- Services Section -->
+      <section class="services container">
+        <h2>Services</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Wireframing</h3>
+            <p>$15/page. Low-fidelity SVG/PNG layouts.</p>
+          </div>
+          <div class="card">
+            <h3>Mockups</h3>
+            <p>$30/page. High-fidelity SVG designs.</p>
+          </div>
+          <div class="card">
+            <h3>Prototypes</h3>
+            <p>$50/page. Interactive HTML/CSS/JS.</p>
+          </div>
+          <div class="card">
+            <h3>Full Package</h3>
+            <p>$60/page. Wireframing, mockups, prototypes.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="about container">
+        <h2>About</h2>
+        <p>I'm a UI/UX designer specializing in mobile-first prototypes using Inkscape for SVGs, CSS, and JavaScript (GSAP, Snap.svg). With experience building a 40+ page POS app, I deliver developer-ready designs optimized for performance.</p>
+      </section>
+
+      <!-- Portfolio Section -->
+      <section class="portfolio container">
+        <h2>Portfolio</h2>
+        <div class="grid">
+          <div class="card">
+            <img src="portfolio/assets/images/quick-analytics-screenshot1.png" alt="Quick Analytics">
+            <h3>Quick Analytics Dashboard</h3>
+            <p>Data-driven UI with SVG charts.</p>
+            <a href="portfolio/quick-analytics">View Demo</a>
+          </div>
+          <div class="card">
+            <img src="portfolio/assets/images/inventory-tool-screenshot1.png" alt="Inventory Tool">
+            <h3>Inventory Management Tool</h3>
+            <p>Retail app with filterable lists.</p>
+            <a href="portfolio/inventory-tool">View Demo</a>
+          </div>
+          <div class="card">
+            <img src="portfolio/assets/images/order-communication-screenshot1.png" alt="Order Hub">
+            <h3>Order & Communication Hub</h3>
+            <p>Chat-style UI for customer apps.</p>
+            <a href="portfolio/order-communication">View Demo</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Right Column (Connect) -->
+      <aside id="right-column-connect" class="side-column column">
+      <h3>Connect</h3>
+      <p>Hire me via <a href="https://www.fiverr.com/yourusername">Fiverr</a> for UI/UX design services.</p>
+    </aside>
+  </div>
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 kaskaz.com. All rights reserved.</p>
+    <p>Book services on <a href="https://www.fiverr.com/yourusername">Fiverr</a>.</p>
+  </footer>
+</body>
+</html>
